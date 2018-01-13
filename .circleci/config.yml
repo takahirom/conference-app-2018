@@ -47,7 +47,7 @@ jobs:
               if [ $CIRCLE_BRANCH = 'master' ]; then
                   ./gradlew --stacktrace testRelease
               else
-                  ./gradlew --stacktrace test${APP_BUILD_TYPE^}
+                  ./gradlew --stacktrace testDebug
               fi
       - run:
           name: Build
@@ -55,14 +55,14 @@ jobs:
               if [ $CIRCLE_BRANCH = 'master' ]; then
                   ./gradlew --offline --stacktrace assembleRelease
               else
-                  ./gradlew --offline --stacktrace assemble${APP_BUILD_TYPE^}
+                  ./gradlew --offline --stacktrace assembleDebug
               fi
       - run:
           name: Check
           command: |
               if [ ! $CIRCLE_BRANCH = 'master' ]; then
-                  ./gradlew --stacktrace lint${APP_BUILD_TYPE^}
-                  ./gradlew --stacktrace ktlint${APP_BUILD_TYPE^}Check
+                  ./gradlew --stacktrace lintDebug
+                  ./gradlew --stacktrace ktlintDebugCheck
                   bundle exec danger
               fi
       - run:
