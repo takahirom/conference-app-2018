@@ -213,7 +213,7 @@ sealed class Result<T>(val inProgress: Boolean) {
 
 Fragment observe ViewModel's LiveData.
 We can use the result with Kotlin `when` expression.
-In `is Result.Success` block, you can access data with `result.data` by Kotlin Smart cast.
+In `is Result.Success` block, you can access data with `result.data` by Kotlin smart cast.
 
 SessionsFragment.kt
 
